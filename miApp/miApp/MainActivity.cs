@@ -25,6 +25,11 @@ namespace miApp
 
             // webview
             Site = FindViewById<Android.Webkit.WebView>(Resource.Id.webViewSite);
+            Site.Settings.JavaScriptEnabled = true;
+            //webViewLogin.Settings.JavaScriptCanOpenWindowsAutomatically = true;
+            Site.Settings.DomStorageEnabled = true;
+            Site.Settings.DatabaseEnabled = true;
+            Site.ClearCache(true);
             Site.LoadUrl("http://192.168.0.145:8002/");
         }
 
