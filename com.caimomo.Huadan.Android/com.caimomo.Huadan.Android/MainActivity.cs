@@ -6,14 +6,13 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
-using Android.Webkit;
 
-namespace miApp
+namespace com.caimomo.Huadan.Android
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        private WebView Site { get; set; }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -23,14 +22,8 @@ namespace miApp
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
-            // webview
-            Site = FindViewById<Android.Webkit.WebView>(Resource.Id.webViewSite);
-            Site.Settings.JavaScriptEnabled = true;
-            //webViewLogin.Settings.JavaScriptCanOpenWindowsAutomatically = true;
-            Site.Settings.DomStorageEnabled = true;
-            Site.Settings.DatabaseEnabled = true;
-            Site.ClearCache(true);
-            Site.LoadUrl("http://192.168.0.145:8002/");
+            FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            fab.Click += FabOnClick;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
